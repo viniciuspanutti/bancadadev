@@ -5,40 +5,20 @@ import { createClient } from "@/lib/supabase/client";
 
 type AuthFormProps = {
   isSupabaseConfigured: boolean;
+  initialMessage?: string;
 };
 
-export function AuthForm({ isSupabaseConfigured }: AuthFormProps) {
+export function AuthForm({ isSupabaseConfigured, initialMessage = "" }: AuthFormProps) {
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(initialMessage);
   const [loading, setLoading] = useState(false);
 
-  const signInWithGoogle = async () => {
+  const signInWithGoogle = () => {
     if (!isSupabaseConfigured) return;
 
     setLoading(true);
     setMessage("");
-
-    try {
-      const supabase = createClient();
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: "google",
-        options: {
-          redirectTo: `${window.location.origin}/auth/callback?next=/novidades`,
-          skipBrowserRedirect: true,
-        },
-      });
-
-      if (error || !data.url) {
-        setMessage("A entrada com Google ainda não está disponível. Use o link por e-mail ou tente novamente mais tarde.");
-        return;
-      }
-
-      window.location.assign(data.url);
-    } catch {
-      setMessage("Não foi possível iniciar o login. Tente novamente.");
-    } finally {
-      setLoading(false);
-    }
+    window.location.assign("/auth/google");
   };
 
   const sendMagicLink = async (event: FormEvent<HTMLFormElement>) => {
