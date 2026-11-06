@@ -30,11 +30,6 @@ export function Header() {
     <header className="site-header">
       <div className="site-header__content">
         <a className="site-header__brand" href="/" aria-label="Bancadadev, página inicial">
-          <span className="site-header__mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M7 4.75h5.3a3.2 3.2 0 0 1 0 6.4H7v-6.4Zm0 6.4h6.4a3.85 3.85 0 1 1 0 7.7H7v-7.7Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-            </svg>
-          </span>
           <span>Bancadadev</span>
         </a>
 
