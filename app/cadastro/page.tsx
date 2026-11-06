@@ -30,7 +30,7 @@ export default async function Cadastro({ searchParams }: CadastroProps) {
   if (user && profileComplete) redirect("/novidades");
 
   return (
-    <main className="flex min-h-screen items-center justify-center px-5 py-10">
+    <main className="page-shell flex min-h-screen items-center justify-center px-5 py-12 sm:px-8 sm:py-16">
       {user ? <ProfileForm userId={user.id} email={user.email ?? ""} initialName={user.user_metadata?.full_name ?? user.user_metadata?.name} /> : <AuthForm isSupabaseConfigured={isSupabaseConfigured} />}
     </main>
   );
