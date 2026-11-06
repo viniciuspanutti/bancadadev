@@ -1,0 +1,12 @@
+:root {
+  --background: #080b10;
+  --surface: #101620;
+  --foreground: #f7f9fc;
+  --muted: #9aa7bb;
+  --accent: #19385f;
+  --accent-strong: #28558c;
+  --line: rgba(83, 128, 181, 0.36);
+  --shadow-premium: 0 16px 38px rgba(0, 0, 0, 0.42), 0 2px 8px rgba(103, 156, 221, 0.12);
+  --font-display: Arial, Helvetica, sans-serif;
+  --font-body: Arial, Helvetica, sans-serif;
+}
