@@ -15,7 +15,7 @@ export function ProofCard() {
         onClick={() => setDownloaded(true)}
         aria-label="Baixar prova"
       >
-        <img src="/P2-POO.jpeg" alt="Prova disponível para baixar" className="block h-36 w-full object-contain" />
+        <img src="/P2-POO.jpeg" alt="Prova disponível para baixar" className="block h-24 w-full object-contain" />
         <span className="download-action premium-button absolute left-1/2 top-1/2 -translate-x-1/2 px-7 py-4 text-base font-bold">
           Baixar
         </span>
