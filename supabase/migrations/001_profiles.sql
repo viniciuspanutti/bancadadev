@@ -17,6 +17,8 @@ create policy "Usuários leem o próprio perfil"
   to authenticated
   using ((select auth.uid()) = id);
 
+grant select on table public.profiles to authenticated;
+
 create or replace function public.criar_profile()
 returns trigger
 language plpgsql
