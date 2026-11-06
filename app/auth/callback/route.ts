@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import { getSupabaseConfig, isSupabaseConfigured } from "@/lib/supabase/config";
 
 type SupabaseCookie = { name: string; value: string; options: CookieOptions };
 
@@ -8,12 +9,18 @@ export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
   const next = searchParams.get("next") || "/novidades";
+
+  if (!isSupabaseConfigured) {
+    return NextResponse.redirect(new URL("/cadastro", origin));
+  }
+
   const cookieStore = await cookies();
 
   if (code) {
+    const { supabaseUrl, supabaseAnonKey } = getSupabaseConfig();
     const supabase = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      supabaseUrl,
+      supabaseAnonKey,
       {
         cookies: {
           getAll: () => cookieStore.getAll(),
@@ -24,7 +31,8 @@ export async function GET(request: Request) {
       },
     );
 
-    await supabase.auth.exchangeCodeForSession(code);
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    if (error) return NextResponse.redirect(new URL("/cadastro?erro=autenticacao", origin));
   }
 
   return NextResponse.redirect(new URL(next.startsWith("/") ? next : "/novidades", origin));
