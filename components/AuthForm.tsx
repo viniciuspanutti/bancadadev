@@ -20,12 +20,20 @@ export function AuthForm({ isSupabaseConfigured }: AuthFormProps) {
 
     try {
       const supabase = createClient();
-      const { error } = await supabase.auth.signInWithOAuth({
+      const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "google",
-        options: { redirectTo: `${window.location.origin}/auth/callback?next=/novidades` },
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback?next=/novidades`,
+          skipBrowserRedirect: true,
+        },
       });
 
-      if (error) setMessage("Não foi possível iniciar o login. Tente novamente.");
+      if (error || !data.url) {
+        setMessage("A entrada com Google ainda não está disponível. Use o link por e-mail ou tente novamente mais tarde.");
+        return;
+      }
+
+      window.location.assign(data.url);
     } catch {
       setMessage("Não foi possível iniciar o login. Tente novamente.");
     } finally {
