@@ -21,7 +21,7 @@ export default async function Novidades() {
     <main className="flex min-h-screen items-center justify-center px-5 text-center">
       <h1 className="text-5xl font-bold tracking-[-0.05em] sm:text-7xl">Novidades em breve!</h1>
       <p className="text-5xl tracking-[-0.05em] sm:text-7xl">Prova de S.O</p>
+      <p>Prova 2 de Sistemas Operacionais</p>
     </main>
-    <p>Prova 2 de Sistemas Operacionais</p>
   );
 }
