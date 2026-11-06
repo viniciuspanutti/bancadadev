@@ -1,10 +1,21 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 export default async function Novidades() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect("/cadastro");
+  if (!isSupabaseConfigured) redirect("/cadastro");
+
+  let hasAuthenticatedUser = false;
+
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    hasAuthenticatedUser = Boolean(user);
+  } catch (error) {
+    console.error("Não foi possível verificar a sessão do usuário.", error);
+  }
+
+  if (!hasAuthenticatedUser) redirect("/cadastro");
 
   return (
     <main className="flex min-h-screen items-center justify-center px-5 text-center">
