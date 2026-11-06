@@ -7,7 +7,7 @@ export function ProofCard() {
   const [downloaded, setDownloaded] = useState(false);
 
   return (
-    <div className="flex w-full max-w-2xl flex-col items-center gap-8">
+    <div className="flex w-full max-w-lg flex-col items-center gap-8">
       <a
         className="proof-link group relative block w-full overflow-hidden rounded-xl border border-[var(--line)] shadow-[var(--shadow-premium)]"
         href="/P2-POO.jpeg"
