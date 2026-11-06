@@ -1,0 +1,14 @@
+<svg width="1400" height="990" viewBox="0 0 1400 990" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="990" fill="#F5F7FA"/>
+  <rect x="74" y="74" width="1252" height="842" rx="12" stroke="#1C3656" stroke-width="4"/>
+  <text x="128" y="190" fill="#08101C" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">bancadadev</text>
+  <line x1="128" y1="236" x2="1272" y2="236" stroke="#A8B7C8" stroke-width="3"/>
+  <text x="128" y="340" fill="#08101C" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="700">PROVA</text>
+  <text x="128" y="414" fill="#58708C" font-family="Arial, Helvetica, sans-serif" font-size="34">Material para download</text>
+  <rect x="128" y="504" width="480" height="18" rx="9" fill="#C4D0DD"/>
+  <rect x="128" y="552" width="914" height="18" rx="9" fill="#D6DEE7"/>
+  <rect x="128" y="600" width="830" height="18" rx="9" fill="#D6DEE7"/>
+  <rect x="128" y="648" width="970" height="18" rx="9" fill="#D6DEE7"/>
+  <rect x="128" y="756" width="235" height="76" rx="10" fill="#1C3656"/>
+  <text x="168" y="806" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">bancadadev</text>
+</svg>
