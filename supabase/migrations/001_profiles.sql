@@ -19,6 +19,14 @@ create policy "Usuários leem o próprio perfil"
 
 grant select on table public.profiles to authenticated;
 
+create policy "Usuários atualizam o próprio perfil"
+  on public.profiles for update
+  to authenticated
+  using ((select auth.uid()) = id)
+  with check ((select auth.uid()) = id);
+
+grant update on table public.profiles to authenticated;
+
 create or replace function public.criar_profile()
 returns trigger
 language plpgsql
@@ -39,3 +47,5 @@ $$;
 create trigger ao_criar_usuario
   after insert on auth.users
   for each row execute procedure public.criar_profile();
+
+revoke execute on function public.criar_profile() from anon, authenticated;
