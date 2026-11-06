@@ -10,3 +10,14 @@
   --font-display: Arial, Helvetica, sans-serif;
   --font-body: Arial, Helvetica, sans-serif;
 }
+
+:root.theme-light {
+  --background: #f7f9fc;
+  --surface: #fff;
+  --foreground: #08101c;
+  --muted: #19385f;
+  --accent: #19385f;
+  --accent-strong: #28558c;
+  --line: rgba(83, 128, 181, 0.36);
+  --shadow-premium: 0 16px 38px rgba(8, 16, 28, 0.13), 0 2px 8px rgba(103, 156, 221, 0.16);
+}

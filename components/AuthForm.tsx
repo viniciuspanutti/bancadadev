@@ -27,15 +27,15 @@ export function AuthForm({ isSupabaseConfigured }: AuthFormProps) {
   };
 
   return (
-    <section className="w-full max-w-sm">
-      <h1 className="mb-3 text-center text-4xl font-bold tracking-[-0.04em] sm:text-5xl">Entre para receber.</h1>
-      <p className="mb-8 text-center text-sm text-[var(--muted)]">Use sua conta Google ou um link enviado por e-mail.</p>
-      <button type="button" onClick={signInWithGoogle} disabled={loading || !isSupabaseConfigured} className="premium-button mb-4 w-full px-6 py-4 text-base font-bold disabled:cursor-wait disabled:opacity-70">Entrar com Google</button>
-      <div className="mb-4 flex items-center gap-3 text-xs text-[var(--muted)]"><span className="h-px flex-1 bg-[var(--line)]" /><span>ou</span><span className="h-px flex-1 bg-[var(--line)]" /></div>
-      <form onSubmit={sendMagicLink} className="flex flex-col gap-3">
+    <section className="form-surface w-full max-w-sm p-6 sm:p-8">
+      <h1 className="page-heading mb-3 text-center text-4xl font-bold tracking-[-0.045em] sm:text-5xl">Entre para receber.</h1>
+      <p className="page-copy mb-8 text-center text-sm text-[var(--muted)]">Use sua conta Google ou um link enviado por e-mail.</p>
+      <button type="button" onClick={signInWithGoogle} disabled={loading || !isSupabaseConfigured} className="premium-button mb-5 w-full px-6 py-3 text-base font-bold disabled:cursor-wait disabled:opacity-70">Entrar com Google</button>
+      <div className="mb-5 flex items-center gap-3 text-xs font-medium text-[var(--muted)]"><span className="h-px flex-1 bg-[var(--line)]" /><span>ou</span><span className="h-px flex-1 bg-[var(--line)]" /></div>
+      <form onSubmit={sendMagicLink} className="flex flex-col gap-4">
         <label htmlFor="email" className="sr-only">E-mail</label>
-        <input id="email" name="email" type="email" autoComplete="email" required disabled={loading || !isSupabaseConfigured} value={email} onChange={(event) => setEmail(event.target.value)} placeholder="seu@email.com" className="w-full rounded-[10px] border border-[var(--line)] bg-[var(--surface)] px-5 py-4 text-base outline-none placeholder:text-[var(--muted)] focus:border-[#89b6e8] disabled:opacity-70" />
-        <button type="submit" disabled={loading || !isSupabaseConfigured} className="w-full rounded-[10px] border border-[var(--line)] px-6 py-4 text-base font-bold disabled:cursor-wait disabled:opacity-70">Enviar link mágico</button>
+        <input id="email" name="email" type="email" autoComplete="email" required disabled={loading || !isSupabaseConfigured} value={email} onChange={(event) => setEmail(event.target.value)} placeholder="seu@email.com" className="field-control w-full px-5 text-base outline-none disabled:cursor-not-allowed disabled:opacity-70" />
+        <button type="submit" disabled={loading || !isSupabaseConfigured} className="secondary-button w-full px-6 py-3 text-base font-bold disabled:cursor-wait disabled:opacity-70">Enviar link mágico</button>
       </form>
       {!isSupabaseConfigured && <p className="mt-5 text-center text-sm text-[var(--muted)]" role="status">O cadastro está sendo configurado.</p>}
       {message && <p className="mt-5 text-center text-sm text-[var(--muted)]" role="status">{message}</p>}
