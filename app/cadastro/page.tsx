@@ -4,11 +4,10 @@ import { createClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 type CadastroProps = {
-  searchParams: Promise<{ erro?: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
 export default async function Cadastro({ searchParams }: CadastroProps) {
-  const { erro } = await searchParams;
   let hasAuthenticatedUser = false;
 
   if (isSupabaseConfigured) {
@@ -27,7 +26,6 @@ export default async function Cadastro({ searchParams }: CadastroProps) {
     <main className="flex min-h-screen items-center justify-center px-5 py-10">
       <AuthForm
         isSupabaseConfigured={isSupabaseConfigured}
-        initialMessage={erro === "google" ? "A entrada com Google ainda não está disponível. Use o link por e-mail por enquanto." : ""}
       />
     </main>
   );
